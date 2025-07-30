@@ -68,10 +68,11 @@
     }
   </style>
 </head>
+
 <body>
   <div class="form-container">
-    <form>
-      <label for="genre">Choose your game genre:</label>
+    <form id="gameForm">
+	<label for="genre">Choose your game genre:</label>
       <select id="genre" name="genre">
         <option value="">--Select--</option>
         <option value="action">Action</option>
@@ -87,10 +88,10 @@
 
       <button type="submit">Submit</button>
     </form>
+<div id="savedData" style="margin-top: 20px; font-weight: bold;"></div>
 
-    <div id="savedData" style="margin-top: 20px; font-weight: bold;"></div>
-
-    <script>
+  </div>
+<script>
   const form = document.getElementById('gameForm');
   const yearsSlider = document.getElementById('years');
   const sliderValue = document.getElementById('sliderValue');
@@ -118,6 +119,6 @@
   });
 </script>
 
-  </div>
 </body>
 </html>
+

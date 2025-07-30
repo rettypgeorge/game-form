@@ -87,6 +87,34 @@
 
       <button type="submit">Submit</button>
     </form>
+    <script>
+  const form = document.getElementById('gameForm');
+  const yearsSlider = document.getElementById('years');
+  const sliderValue = document.getElementById('sliderValue');
+  const genreSelect = document.getElementById('genre');
+
+  // Update the slider label live
+  yearsSlider.oninput = () => {
+    sliderValue.textContent = `${yearsSlider.value} years`;
+  };
+
+  // Save to localStorage when form is submitted
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // stop actual form submit
+
+    // Get values
+    const formData = {
+      genre: genreSelect.value,
+      years: yearsSlider.value
+    };
+
+    // Convert to JSON and store in localStorage
+    localStorage.setItem("gameFormData", JSON.stringify(formData));
+
+    alert("Your form data has been saved!");
+  });
+</script>
+
   </div>
 </body>
 </html>

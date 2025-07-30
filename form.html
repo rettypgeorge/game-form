@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WebP Background with Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: rgba(255, 248, 220, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 90%;
+      width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      font-size: 1.2em;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    select, input[type="range"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 15px;
+      font-size: 1em;
+      margin-bottom: 20px;
+      border: none;
+    }
+
+    .slider-value {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #4b2e00;
+      color: #fff3d1;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 15px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #663a00;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form>
+      <label for="genre">Choose your game genre:</label>
+      <select id="genre" name="genre">
+        <option value="">--Select--</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="rpg">RPG</option>
+        <option value="strategy">Strategy</option>
+        <option value="sports">Sports</option>
+      </select>
+
+      <label for="years">How many years have you been playing?</label>
+      <input type="range" id="years" name="years" min="0" max="20" value="10" oninput="sliderValue.innerText = this.value + ' years';">
+      <div class="slider-value" id="sliderValue">10 years</div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

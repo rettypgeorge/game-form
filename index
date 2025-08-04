@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WebP Background with Form</title>
+  <style>
+	
+    body {
+      margin: 0;
+      padding: 0;
+      
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+	.hero {
+  min-height: 100vh;
+  background: url("https://miro.medium.com/v2/resize:fit:1400/1*K8bYUWu31sfk3jcM2qtP1A.jpeg") 
+              no-repeat center center / cover;
+  display: flex;
+  align-items: center;        
+  justify-content: center;    
+  padding: 0 20px;
+  color: white;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+}
+
+    
+	.form-container {
+      background-color: rgba(255, 248, 220, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 90%;
+      width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      font-size: 1.2em;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    select, input[type="range"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 15px;
+      font-size: 1em;
+      margin-bottom: 20px;
+      border: none;
+    }
+
+    .slider-value {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #4b2e00;
+      color: #fff3d1;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 15px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #663a00;
+    }
+	  
+  </style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to My Website</h1>
+    <p>Your journey to learning web development starts here.</p>
+    <!-- <a href="#learn-more" class="cta-button">Get Started</a>-->
+  </div>
+
+
+  <div class="form-container">
+    <form id="gameForm">
+	<label for="genre">Choose your game genre:</label>
+      <select id="genre" name="genre">
+        <option value="">--Select--</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="rpg">RPG</option>
+        <option value="strategy">Strategy</option>
+        <option value="sports">Sports</option>
+      </select>
+
+      <label for="years">How many years have you been playing?</label>
+      <input type="range" id="years" name="years" min="0" max="20" value="10" oninput="sliderValue.innerText = this.value + ' years';">
+      <div class="slider-value" id="sliderValue">10 years</div>
+
+      <button type="submit">Submit</button>
+    </form>
+<div id="savedData" style="margin-top: 20px; font-weight: bold;"></div>
+
+  </div>
+<script>
+  const form = document.getElementById('gameForm');
+  const yearsSlider = document.getElementById('years');
+  const sliderValue = document.getElementById('sliderValue');
+  const genreSelect = document.getElementById('genre');
+
+  // Update the slider label live
+  yearsSlider.oninput = () => {
+    sliderValue.textContent = `${yearsSlider.value} years`;
+  };
+
+  // Save to localStorage when form is submitted
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // stop actual form submit
+
+    // Get values
+    const formData = {
+      genre: genreSelect.value,
+      years: yearsSlider.value
+    };
+
+    // Convert to JSON and store in localStorage
+    localStorage.setItem("gameFormData", JSON.stringify(formData));
+
+    alert("Your form data has been saved!");
+  });
+</script>
+
+</body>
+</html>
